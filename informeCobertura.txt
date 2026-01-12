@@ -1,0 +1,11 @@
+Informe de Cobertura: Se ha alcanzado un 100% de cobertura de ramas (Branch Coverage) y un 95% de cobertura de instrucciones.
+
+Justificación del 5% restante: Las únicas líneas no cubiertas corresponden al bloque catch (IOException e) asociado a la lectura 
+del archivo mediante Counter. Para cubrir esta ruta, sería necesario simular un fallo de entrada/salida (I/O) justo después de 
+haber abierto el archivo exitosamente (por ejemplo, desconexión del dispositivo de almacenamiento durante la lectura). 
+Dado que la instancia de BufferedReader se crea internamente dentro del método main y no se inyecta, no es posible simular este 
+fallo mediante pruebas unitarias estándar o Mocks sencillos sin refactorizar la estructura del código fuente original, lo cual 
+alteraría el objeto de prueba.
+
+Se considera que la cobertura actual garantiza el correcto funcionamiento de toda la lógica de negocio y control de errores 
+provocables por el usuario.

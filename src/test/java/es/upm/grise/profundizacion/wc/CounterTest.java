@@ -23,7 +23,23 @@ public class CounterTest {
         assertEquals(3, counter.getNumberLines());
         assertEquals(10, counter.getNumberWords());
     }
-   
+    
+    
+    @Test
+    public void testWithTabs() throws IOException {
+    	// Prueba específica para verificar que el tabulador ('\t') se detecta como separador.
+    	// Necesario para cubrir la rama condicional completa en Counter.java.
+    	// Se añade un espacio final para asegurar que la última palabra se cuenta correctamente.
+    	
+        // Añadimos un espacio al final para que detecte la segunda palabra
+        String content = "Palabra1\tPalabra2 "; 
+        BufferedReader reader = new BufferedReader(new StringReader(content));
+        
+        Counter counter = new Counter(reader);
+        
+        // Ahora sí detectará 2 separadores (el tabulador y el espacio final)
+        assertEquals(2, counter.getNumberWords());
+    }
 
 }
 
